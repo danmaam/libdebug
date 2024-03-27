@@ -54,7 +54,6 @@ else:
 
 
 class JumpstartBuildCommand(build):
-
     def run(self):
         os.system(
             "cc -o libdebug/ptrace/jumpstart/jumpstart libdebug/ptrace/jumpstart/jumpstart.c"
@@ -72,13 +71,7 @@ setup(
     version="0.4.1",
     description="A library to debug binary programs",
     packages=find_packages(include=["libdebug", "libdebug.*"]),
-    install_requires=[
-        "capstone",
-        "pyelftools",
-        "cffi",
-        "requests",
-        "psutil"
-    ],
+    install_requires=["capstone", "pyelftools", "cffi", "requests", "psutil"],
     setup_requires=["cffi"],
     cffi_modules=[
         "./libdebug/cffi/ptrace_cffi_build.py:ffibuilder",
@@ -86,6 +79,9 @@ setup(
         f"./libdebug/cffi/{debug_sym_cffi}.py:ffibuilder",
     ],
     cmdclass={"build": JumpstartBuildCommand},
-    package_data={"libdebug.ptrace.jumpstart": ["jumpstart"]},
+    package_data={
+        "libdebug.ptrace.jumpstart": ["jumpstart", "jumpstart.c"],
+        "libdebug.cffi": ["*.c"],
+    },
     include_package_data=True,
 )
