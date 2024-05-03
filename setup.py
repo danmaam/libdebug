@@ -68,7 +68,7 @@ class JumpstartBuildCommand(build):
 
 setup(
     name="libdebug",
-    version="0.4.2",
+    version="0.4.3",
     description="A library to debug binary programs",
     packages=find_packages(include=["libdebug", "libdebug.*"]),
     install_requires=["capstone", "pyelftools", "cffi", "requests", "psutil"],
