@@ -72,7 +72,7 @@ class MemoryTest(unittest.TestCase):
             self.assertTrue(False)
         except ValueError:
             self.assertTrue(False)
-        except OSError:
+        except RuntimeError:
             self.assertTrue(True)
 
         assert d.rip == bp.address
